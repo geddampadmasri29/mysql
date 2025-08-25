@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee List</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    form { margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; width: 300px; border-radius: 8px; }
+    label { display: block; margin-top: 10px; }
+    input { width: 95%; padding: 5px; margin-top: 5px; }
+    button { margin-top: 15px; padding: 8px 12px; background: #6a1b9a; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #501477; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: #f1f1f1; }
+  </style>
+</head>
+<body>
+  <h2>Add Employee</h2>
+  
+  <!-- Form -->
+  <form id="addEmployeeForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+    
+    <label for="age">Age:</label>
+    <input type="number" id="age" required>
+    
+    <label for="position">Position:</label>
+    <input type="text" id="position" required>
+    
+    <button type="submit">Add Employee</button>
+  </form>
+  
+  <!-- Employee Table -->
+  <h2>Employee List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Position</th>
+      </tr>
+    </thead>
+    <tbody id="employeeList"></tbody>
+  </table>
+  
+  <!-- Script -->
+  <script>
+    document.getElementById("addEmployeeForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const position = document.getElementById("position").value;
+      
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${name}</td>
+        <td>${age}</td>
+        <td>${position}</td>
+      `;
+      
+      document.getElementById("employeeList").appendChild(tr);
+      
+      document.getElementById("addEmployeeForm").reset();
+    });
+  </script>
+</body>
+</html>
